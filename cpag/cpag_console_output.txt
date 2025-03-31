@@ -1,0 +1,83 @@
+[centos@master ~]$ hadoop jar /opt/hadoop-3.2.4/share/hadoop/tools/lib/hadoop-streaming-3.2.4.jar -file ./cpag_mapper.py -mapper 'python3 cpag_mapper.py' -file ./cpag_reducer.py -reducer 'python3 cpag_reducer.py' -input /input/Crime_Data.txt -output /cpag_output 
+2025-03-31 10:05:52,579 WARN streaming.StreamJob: -file option is deprecated, please use generic option -files instead.
+packageJobJar: [./cpag_mapper.py, ./cpag_reducer.py, /tmp/hadoop-unjar3735975603388211997/] [] /tmp/streamjob9129294430061840472.jar tmpDir=null
+2025-03-31 10:05:53,649 INFO client.RMProxy: Connecting to ResourceManager at master/172.31.14.248:8032
+2025-03-31 10:05:53,923 INFO client.RMProxy: Connecting to ResourceManager at master/172.31.14.248:8032
+2025-03-31 10:05:54,153 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/centos/.staging/job_1743410715370_0012
+2025-03-31 10:05:54,643 INFO mapred.FileInputFormat: Total input files to process : 1
+2025-03-31 10:05:54,768 INFO mapreduce.JobSubmitter: number of splits:2
+2025-03-31 10:05:54,975 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1743410715370_0012
+2025-03-31 10:05:54,977 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2025-03-31 10:05:55,199 INFO conf.Configuration: resource-types.xml not found
+2025-03-31 10:05:55,199 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2025-03-31 10:05:55,501 INFO impl.YarnClientImpl: Submitted application application_1743410715370_0012
+2025-03-31 10:05:55,554 INFO mapreduce.Job: The url to track the job: http://master:8088/proxy/application_1743410715370_0012/
+2025-03-31 10:05:55,556 INFO mapreduce.Job: Running job: job_1743410715370_0012
+2025-03-31 10:06:03,686 INFO mapreduce.Job: Job job_1743410715370_0012 running in uber mode : false
+2025-03-31 10:06:03,687 INFO mapreduce.Job:  map 0% reduce 0%
+2025-03-31 10:06:09,826 INFO mapreduce.Job:  map 100% reduce 0%
+2025-03-31 10:06:15,886 INFO mapreduce.Job:  map 100% reduce 100%
+2025-03-31 10:06:15,895 INFO mapreduce.Job: Job job_1743410715370_0012 completed successfully
+2025-03-31 10:06:16,003 INFO mapreduce.Job: Counters: 54
+	File System Counters
+		FILE: Number of bytes read=794108
+		FILE: Number of bytes written=2316240
+		FILE: Number of read operations=0
+		FILE: Number of large read operations=0
+		FILE: Number of write operations=0
+		HDFS: Number of bytes read=5273981
+		HDFS: Number of bytes written=9568
+		HDFS: Number of read operations=11
+		HDFS: Number of large read operations=0
+		HDFS: Number of write operations=2
+		HDFS: Number of bytes read erasure-coded=0
+	Job Counters 
+		Launched map tasks=2
+		Launched reduce tasks=1
+		Data-local map tasks=2
+		Total time spent by all maps in occupied slots (ms)=16232
+		Total time spent by all reduces in occupied slots (ms)=10110
+		Total time spent by all map tasks (ms)=8116
+		Total time spent by all reduce tasks (ms)=3370
+		Total vcore-milliseconds taken by all map tasks=8116
+		Total vcore-milliseconds taken by all reduce tasks=3370
+		Total megabyte-milliseconds taken by all map tasks=16621568
+		Total megabyte-milliseconds taken by all reduce tasks=10352640
+	Map-Reduce Framework
+		Map input records=19320
+		Map output records=19319
+		Map output bytes=755464
+		Map output materialized bytes=794114
+		Input split bytes=182
+		Combine input records=0
+		Combine output records=0
+		Reduce input groups=254
+		Reduce shuffle bytes=794114
+		Reduce input records=19319
+		Reduce output records=254
+		Spilled Records=38638
+		Shuffled Maps =2
+		Failed Shuffles=0
+		Merged Map outputs=2
+		GC time elapsed (ms)=249
+		CPU time spent (ms)=4320
+		Physical memory (bytes) snapshot=1659932672
+		Virtual memory (bytes) snapshot=10754011136
+		Total committed heap usage (bytes)=1603272704
+		Peak Map Physical memory (bytes)=738004992
+		Peak Map Virtual memory (bytes)=3021983744
+		Peak Reduce Physical memory (bytes)=187879424
+		Peak Reduce Virtual memory (bytes)=4713041920
+	Shuffle Errors
+		BAD_ID=0
+		CONNECTION=0
+		IO_ERROR=0
+		WRONG_LENGTH=0
+		WRONG_MAP=0
+		WRONG_REDUCE=0
+	File Input Format Counters 
+		Bytes Read=5273799
+	File Output Format Counters 
+		Bytes Written=9568
+2025-03-31 10:06:16,003 INFO streaming.StreamJob: Output directory: /cpag_output
+
