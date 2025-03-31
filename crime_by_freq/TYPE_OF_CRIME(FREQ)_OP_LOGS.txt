@@ -1,0 +1,190 @@
+################
+
+[centos@master Desktop]$ hadoop jar /opt/hadoop-3.2.4/share/hadoop/tools/lib/hadoop-streaming-3.2.4.jar -file freq_mapper.py -file fr
+eq_reducer.py -mapper "python3 freq_mapper.py" -reducer "python3 freq_reducer.py" -input /A3BGroup/Data/Crime_Data_Filtered2.txt -out
+put /A3BGroup/Data/by_frequency
+2025-03-31 07:06:35,741 WARN streaming.StreamJob: -file option is deprecated, please use generic option -files instead.
+packageJobJar: [freq_mapper.py, freq_reducer.py, /tmp/hadoop-unjar8436425671032810911/] [] /tmp/streamjob4095635669379079855.jar tmpDir=null
+2025-03-31 07:06:36,745 INFO client.RMProxy: Connecting to ResourceManager at master/172.31.8.162:8032
+2025-03-31 07:06:36,994 INFO client.RMProxy: Connecting to ResourceManager at master/172.31.8.162:8032
+2025-03-31 07:06:37,245 INFO mapreduce.JobResourceUploader: Disabling Erasure Coding for path: /tmp/hadoop-yarn/staging/centos/.staging/job_1743402904845_0001
+2025-03-31 07:06:37,717 INFO mapred.FileInputFormat: Total input files to process : 1
+2025-03-31 07:06:37,851 INFO mapreduce.JobSubmitter: number of splits:2
+2025-03-31 07:06:38,642 INFO mapreduce.JobSubmitter: Submitting tokens for job: job_1743402904845_0001
+2025-03-31 07:06:38,644 INFO mapreduce.JobSubmitter: Executing with tokens: []
+2025-03-31 07:06:38,855 INFO conf.Configuration: resource-types.xml not found
+2025-03-31 07:06:38,855 INFO resource.ResourceUtils: Unable to find 'resource-types.xml'.
+2025-03-31 07:06:39,332 INFO impl.YarnClientImpl: Submitted application application_1743402904845_0001
+2025-03-31 07:06:39,379 INFO mapreduce.Job: The url to track the job: http://master:8088/proxy/application_1743402904845_0001/
+2025-03-31 07:06:39,381 INFO mapreduce.Job: Running job: job_1743402904845_0001
+2025-03-31 07:06:48,532 INFO mapreduce.Job: Job job_1743402904845_0001 running in uber mode : false
+2025-03-31 07:06:48,533 INFO mapreduce.Job:  map 0% reduce 0%
+2025-03-31 07:06:57,701 INFO mapreduce.Job:  map 100% reduce 0%
+2025-03-31 07:07:05,768 INFO mapreduce.Job:  map 100% reduce 100%
+2025-03-31 07:07:06,788 INFO mapreduce.Job: Job job_1743402904845_0001 completed successfully
+2025-03-31 07:07:06,884 INFO mapreduce.Job: Counters: 54
+        File System Counters
+                FILE: Number of bytes read=668217
+                FILE: Number of bytes written=2064602
+                FILE: Number of read operations=0
+                FILE: Number of large read operations=0
+                FILE: Number of write operations=0
+                HDFS: Number of bytes read=5274017
+                HDFS: Number of bytes written=2799
+                HDFS: Number of read operations=11
+                HDFS: Number of large read operations=0
+                HDFS: Number of write operations=2
+                HDFS: Number of bytes read erasure-coded=0
+        Job Counters
+                Launched map tasks=2
+                Launched reduce tasks=1
+                Data-local map tasks=2
+                Total time spent by all maps in occupied slots (ms)=27630
+                Total time spent by all reduces in occupied slots (ms)=16035
+                Total time spent by all map tasks (ms)=13815
+                Total time spent by all reduce tasks (ms)=5345
+                Total vcore-milliseconds taken by all map tasks=13815
+                Total vcore-milliseconds taken by all reduce tasks=5345
+                Total megabyte-milliseconds taken by all map tasks=28293120
+                Total megabyte-milliseconds taken by all reduce tasks=16419840
+        Map-Reduce Framework
+                Map input records=19320
+                Map output records=19320
+                Map output bytes=629571
+                Map output materialized bytes=668223
+                Input split bytes=218
+                Combine input records=0
+                Combine output records=0
+                Reduce input groups=91
+                Reduce shuffle bytes=668223
+                Reduce input records=19320
+                Reduce output records=91
+                Spilled Records=38640
+                Shuffled Maps =2
+                Failed Shuffles=0
+                Merged Map outputs=2
+                GC time elapsed (ms)=232
+                CPU time spent (ms)=4360
+                Physical memory (bytes) snapshot=1692454912
+                Virtual memory (bytes) snapshot=10755850240
+                Total committed heap usage (bytes)=1611137024
+                Peak Map Physical memory (bytes)=738729984
+                Peak Map Virtual memory (bytes)=3017498624
+                Peak Reduce Physical memory (bytes)=220246016
+                Peak Reduce Virtual memory (bytes)=4721139712
+        Shuffle Errors
+                BAD_ID=0
+                CONNECTION=0
+                IO_ERROR=0
+                WRONG_LENGTH=0
+                WRONG_MAP=0
+                WRONG_REDUCE=0
+        File Input Format Counters
+                Bytes Read=5273799
+        File Output Format Counters
+                Bytes Written=2799
+2025-03-31 07:07:06,884 INFO streaming.StreamJob: Output directory: /A3BGroup/Data/by_frequency
+[centos@master Desktop]$
+
+2025-03-31 07:07:06,884 INFO streaming.StreamJob: Output directory: /A3BGroup/Data/by_frequency
+[centos@master Desktop]$ hadoop fs -ls /A3BGroup/Data/by_frequency
+Found 2 items
+-rw-r--r--   3 centos hadoop          0 2025-03-31 07:07 /A3BGroup/Data/by_frequency/_SUCCESS
+-rw-r--r--   3 centos hadoop       2799 2025-03-31 07:07 /A3BGroup/Data/by_frequency/part-00000
+[centos@master Desktop]$
+
+-rw-r--r--   3 centos hadoop       2799 2025-03-31 07:07 /A3BGroup/Data/by_frequency/part-00000
+[centos@master Desktop]$ hadoop fs -cat /A3BGroup/Data/by_frequency/part-00000
+"ASSAULT WITH DEADLY WEAPON, AGGRAVATED ASSAULT"        3120
+"BUNCO, ATTEMPT"        2
+"BUNCO, GRAND THEFT"    2
+"BUNCO, PETTY THEFT"    3
+"BURGLARY FROM VEHICLE, ATTEMPTED"      2
+"BURGLARY, ATTEMPTED"   31
+"DEFRAUDING INNKEEPER/THEFT OF SERVICES, OVER $950.01"  1
+"LETTERS, LEWD  -  TELEPHONE CALLS, LEWD"       28
+"MANSLAUGHTER, NEGLIGENT"       1
+"RAPE, ATTEMPTED"       28
+"RAPE, FORCIBLE"        232
+"REPLICA FIREARMS(SALE,DISPLAY,MANUFACTURE OR DISTRIBUTE)"      1
+"SEX,UNLAWFUL(INC MUTUAL CONSENT, PENETRATION W/ FRGN OBJ"      22
+"SHOTS FIRED AT MOVING VEHICLE, TRAIN OR AIRCRAFT"      25
+"THEFT, COIN MACHINE - PETTY ($950 & UNDER)"    1
+"THEFT, PERSON" 72
+"THEFT-GRAND ($950.01 & OVER)EXCPT,GUNS,FOWL,LIVESTK,PROD"      232
+"VANDALISM - FELONY ($400 & OVER, ALL CHURCH VANDALISMS)"       304
+ARSON   23
+ASSAULT WITH DEADLY WEAPON ON POLICE OFFICER    18
+ATTEMPTED ROBBERY       264
+BATTERY - SIMPLE ASSAULT        4757
+BATTERY ON A FIREFIGHTER        8
+BATTERY POLICE (SIMPLE) 73
+BATTERY WITH SEXUAL CONTACT     304
+BIKE - STOLEN   2
+BOMB SCARE      12
+BRANDISH WEAPON 930
+BURGLARY        486
+BURGLARY FROM VEHICLE   280
+CHILD ABUSE (PHYSICAL) - AGGRAVATED ASSAULT     37
+CHILD ABUSE (PHYSICAL) - SIMPLE ASSAULT 248
+CHILD ANNOYING (17YRS & UNDER)  12
+CHILD NEGLECT (SEE 300 W.I.C.)  15
+CHILD PORNOGRAPHY       1
+CONTEMPT OF COURT       14
+CONTRIBUTING    1
+CRIMINAL HOMICIDE       95
+CRIMINAL THREATS - NO WEAPON DISPLAYED  1132
+CRM AGNST CHLD (13 OR UNDER) (14-15 & SUSP 10 YRS OLDER)        127
+CRUELTY TO ANIMALS      2
+Crm Cd Desc     1
+DISCHARGE FIREARMS/SHOTS FIRED  46
+DISTURBING THE PEACE    20
+EXTORTION       26
+FAILURE TO YIELD        1
+FALSE IMPRISONMENT      10
+GRAND THEFT / INSURANCE FRAUD   1
+HUMAN TRAFFICKING - COMMERCIAL SEX ACTS 8
+HUMAN TRAFFICKING - INVOLUNTARY SERVITUDE       2
+INDECENT EXPOSURE       7
+INTIMATE PARTNER - AGGRAVATED ASSAULT   757
+INTIMATE PARTNER - SIMPLE ASSAULT       2707
+KIDNAPPING      61
+KIDNAPPING - GRAND ATTEMPT      13
+LEWD CONDUCT    6
+LEWD/LASCIVIOUS ACTS WITH CHILD 3
+ORAL COPULATION 48
+OTHER ASSAULT   223
+OTHER MISCELLANEOUS CRIME       47
+PEEPING TOM     2
+PICKPOCKET      1
+PIMPING 1
+PROWLER 2
+PURSE SNATCHING 1
+PURSE SNATCHING - ATTEMPT       1
+RESISTING ARREST        34
+ROBBERY 1568
+SEXUAL PENETRATION W/FOREIGN OBJECT     90
+SHOPLIFTING - PETTY THEFT ($950 & UNDER)        6
+SHOPLIFTING-GRAND THEFT ($950.01 & OVER)        2
+SHOTS FIRED AT INHABITED DWELLING       54
+SODOMY/SEXUAL CONTACT B/W PENIS OF ONE PERS TO ANUS OTH 28
+STALKING        37
+THEFT FROM MOTOR VEHICLE - ATTEMPT      1
+THEFT FROM MOTOR VEHICLE - GRAND ($950.01 AND OVER)     41
+THEFT FROM MOTOR VEHICLE - PETTY ($950 & UNDER) 13
+THEFT FROM PERSON - ATTEMPT     4
+THEFT OF IDENTITY       3
+THEFT PLAIN - ATTEMPT   2
+THEFT PLAIN - PETTY ($950 & UNDER)      196
+THREATENING PHONE CALLS/LETTERS 21
+THROWING OBJECT AT MOVING VEHICLE       48
+TRESPASSING     31
+VANDALISM - MISDEAMEANOR ($399 OR UNDER)        102
+VEHICLE - ATTEMPT STOLEN        36
+VEHICLE - STOLEN        6
+VIOLATION OF COURT ORDER        13
+VIOLATION OF RESTRAINING ORDER  37
+VIOLATION OF TEMPORARY RESTRAINING ORDER        1
+WEAPONS POSSESSION/BOMBING      3
+[centos@master Desktop]$
+
