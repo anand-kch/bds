@@ -20,3 +20,6 @@ hadoop jar /opt/hadoop-3.2.4/share/hadoop/tools/lib/hadoop-streaming-3.2.4.jar \
 -file ./reducer.py -reducer 'python reducer.py' \
 -input /assignment/sample.txt \
 -output /wc_output 
+
+
+https://github.com/pyJbx/hadoop
