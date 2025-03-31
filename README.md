@@ -23,9 +23,9 @@ hadoop jar /opt/hadoop-3.2.4/share/hadoop/tools/lib/hadoop-streaming-3.2.4.jar \
 
 
 hadoop jar /opt/hadoop-3.2.4/share/hadoop/tools/lib/hadoop-streaming-3.2.4.jar \
--file ./mapper.py -mapper 'python mapper.py' \
--file ./reducer.py -reducer 'python reducer.py' \
--input /input/crime_data_subset1.txt \
--output /wc_output 
+-file ./ctd_mapper.py -mapper 'python3 ctd_mapper.py' \
+-file ./ctd_reducer.py -reducer 'python3 ctd_reducer.py' \
+-input /input/Crime_Data.txt \
+-output /ctd_output
 
 https://github.com/pyJbx/hadoop
